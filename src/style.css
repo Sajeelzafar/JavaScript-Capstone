@@ -16,6 +16,12 @@ header {
   font-size: 32px;
 }
 
+nav a {
+  text-decoration: none;
+  padding: 10px 30px;
+  color: rgb(14, 13, 13);
+}
+
 .logo a {
   display: block;
   font-weight: bold;
@@ -26,10 +32,4 @@ header {
 
 .my-movies {
   text-decoration: underline;
-}
-
-nav a {
-  text-decoration: none;
-  padding: 10px 30px;
-  color: rgb(14, 13, 13);
 }
