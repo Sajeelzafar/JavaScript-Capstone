@@ -1,8 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-* {
-  margin: 0;
+body {
+  box-sizing: border-box;
   padding: 0;
+  border: 0;
+}
+
+header {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  gap: 200px;
+  position: relative;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 32px;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px 30px;
+  color: rgb(14, 13, 13);
+}
+
+.logo a {
+  display: block;
+  font-weight: bold;
+  margin-left: 100px;
+  color: rgb(14, 13, 13);
+  text-decoration: none;
+}
+
+.my-movies {
+  text-decoration: underline;
 }
 
 .borderbox {
