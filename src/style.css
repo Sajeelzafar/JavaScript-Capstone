@@ -6,25 +6,24 @@
 }
 
 .borderbox {
-    width: 100%;
-    border: 3px solid black;
+  width: 100%;
+  border: 3px solid black;
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .footerText {
-    font-family: Roboto, sans-serif;
-    padding: 2.5%;
-    border-bottom: none;
+  font-family: Roboto, sans-serif;
+  padding: 2.5%;
+  border-bottom: none;
 }
 
-.endblackbox{
-    background-color: grey;
-    height: 2rem;
+.endblackbox {
+  background-color: grey;
+  height: 2rem;
 }
-
