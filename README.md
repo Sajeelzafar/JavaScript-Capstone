@@ -55,6 +55,12 @@ Open the directory in visual studio code by typing the following command in Git 
 - Twitter: [@SajeelZafar6](https://twitter.com/SajeelZafar6)
 - LinkedIn: [Sajeel Zafar](https://www.linkedin.com/in/sajeelzafar/)
 
+👤 **Selma Ndapanda Hamutenya**
+
+- GitHub: [@SelmaNdapanda](https://github.com/SelmaNdapanda)
+- Twitter: [@SellohBlaq](https://twitter.com/sellohBlaq)
+- LinkedIn: [selma-ndapanda-hamutenya-19169a1ab](https://linkedin.com/in/selma-ndapanda-hamutenya-19169a1
+
 
 ## 🤝 Contributing
 
@@ -69,6 +75,8 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Hat tip to anyone whose code was used
+- Hat tip to [Font Awesome](https://fontawesome.com) for icons
+- Hat tip to [Google APIs](https://fonts.googleapis.com) for fonts
 
 ## 📝 License
 
