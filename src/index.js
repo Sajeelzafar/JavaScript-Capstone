@@ -27,11 +27,10 @@ id.forEach((movie) => {
   });
 });
 
-let ID = "";
+let ID = '';
 
 function openPopUp() {
   popup.classList.add('open');
-  
 }
 function closePopUp() {
   popup.classList.remove('open');
@@ -51,8 +50,7 @@ movies.addEventListener('click', (e) => {
       <div class="secondline">${res.summary}
       </div>`;
     });
-
-    }
+  }
 });
 
 closebutton.addEventListener('click', () => {
@@ -64,5 +62,5 @@ popupCommentButton.addEventListener('click', () => {
     item_id: ID,
     username: inputname.value,
     comment: textarea.value,
-  })
-})
+  });
+});

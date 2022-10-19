@@ -136,21 +136,21 @@ section {
 }
 
 .input {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .inputname {
-    width: 60%;
-    height: 2rem;
+  width: 60%;
+  height: 2rem;
 }
 
 textarea {
-    padding: 2%;
+  padding: 2%;
 }
 
 .popupCommentButton {
-    width: 25%;
-    height: 2rem;
+  width: 25%;
+  height: 2rem;
 }
