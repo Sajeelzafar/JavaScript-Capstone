@@ -1,11 +1,11 @@
 // import _ from 'lodash';
 import './style.css';
-import fetchData from './modules/displayMovies.js'
+import fetchData from './modules/displayMovies.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
 id.forEach((movie) => {
-    fetchData(movie).then((res) => {
+  fetchData(movie).then((res) => {
     movies.innerHTML += `<div class="movie-img">
     <img src="${res.image.medium}">
     <section class='movie-desk'>
