@@ -40,7 +40,6 @@ function closePopUp() {
 
 movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
-    commentsload.innerHTML = '';
     fetchData(e.target.parentElement.id).then((res) => {
       openPopUp();
       ID = e.target.parentElement.id;
@@ -52,11 +51,7 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      fetchcomment(ID).then((output) => {
-        output.forEach((comment) => {
-          commentsload.innerHTML += `<p><span>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
-        });
-      });
+      fetchcomment(ID);
     });
   }
 });
@@ -71,4 +66,5 @@ popupCommentButton.addEventListener('click', () => {
     username: inputname.value,
     comment: textarea.value,
   });
+  commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
 });
