@@ -15,6 +15,7 @@ header {
   width: 100%;
   margin-top: 15px;
   font-size: 32px;
+  position: fixed;
 }
 
 nav a {
@@ -41,7 +42,6 @@ nav a {
 }
 
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -56,4 +56,29 @@ nav a {
 .endblackbox {
   background-color: grey;
   height: 2rem;
+}
+
+section {
+  
+  height: auto;
+  padding-top: 40px;
+}
+
+.movie-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px 200px;
+  padding: 30px;
+}
+
+.like-button {
+  background:none;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-heart:active {
+  background: red;
 }
