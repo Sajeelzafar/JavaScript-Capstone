@@ -1,17 +1,18 @@
 // import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
+import addcomment from './modules/addcomment.js';
 // import newapp from './modules/newapp';
 // import commentData from './modules/loadinginfo.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
-const pass = [];
 const popup = document.querySelector('.pop-up');
 const closebutton = document.querySelector('.closebutton');
 const popupContentLoad = document.querySelector('.popupContentLoad');
-
-
+const popupCommentButton = document.querySelector('.popupCommentButton');
+const inputname = document.querySelector('.inputname');
+const textarea = document.querySelector('.textarea');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -29,8 +30,11 @@ id.forEach((movie) => {
   // pass.push()
 });
 
+let ID = "";
+
 function openPopUp() {
   popup.classList.add('open');
+  
 }
 function closePopUp() {
   popup.classList.remove('open');
@@ -40,8 +44,9 @@ movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
     fetchData(e.target.parentElement.id).then((res) => {
       openPopUp();
+      ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
-      <img src="${res.image.medium}"></div>
+      <img id="${e.target.parentElement.id}" src="${res.image.medium}"></div>
       <div class="firstline">
       <span class="firstlineItemone">Categories: ${res.genres.join(', ')}</span>
       <span class="firstlineItemtwo">Rating: ${res.rating.average}</span>
@@ -56,3 +61,8 @@ movies.addEventListener('click', (e) => {
 closebutton.addEventListener('click', () => {
   closePopUp();
 });
+
+popupCommentButton.addEventListener('click', () => {
+  console.log(typeof ID, typeof inputname.value, typeof textarea.value)
+  addcomment(ID, inputname.value, textarea.value)
+})
