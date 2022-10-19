@@ -2,6 +2,7 @@
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
+import fetchcomment from './modules/fetchcomment.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -11,6 +12,7 @@ const popupContentLoad = document.querySelector('.popupContentLoad');
 const popupCommentButton = document.querySelector('.popupCommentButton');
 const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
+const commentsload = document.querySelector('.commentsload');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -38,6 +40,7 @@ function closePopUp() {
 
 movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
+    commentsload.innerHTML = '';
     fetchData(e.target.parentElement.id).then((res) => {
       openPopUp();
       ID = e.target.parentElement.id;
@@ -49,6 +52,11 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
+      fetchcomment(ID).then((output) => {
+        output.forEach((comment) => {
+          commentsload.innerHTML += `<p><span>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
+        });
+      });
     });
   }
 });
