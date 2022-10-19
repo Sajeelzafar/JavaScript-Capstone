@@ -52,11 +52,9 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      let count = fetchcomment(ID, commentCounter);
-      count.then(res => {
-        console.log("RES is", res)
+      const count = fetchcomment(ID, commentCounter);
+      count.then((res) => {
         commentCounter = res;
-        console.log("Comment counter is", commentCounter, typeof commentCounter);
         countercomment.innerHTML = `( ${commentCounter} )`;
       });
     });
@@ -77,6 +75,5 @@ popupCommentButton.addEventListener('click', () => {
   });
   commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
   commentCounter += 1;
-  console.log(commentCounter);
   countercomment.innerHTML = `( ${commentCounter} )`;
 });
