@@ -2,8 +2,6 @@
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
-// import newapp from './modules/newapp';
-// import commentData from './modules/loadinginfo.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -27,7 +25,6 @@ id.forEach((movie) => {
     </section>
     <button class="comment-button">Comment</button></div>`;
   });
-  // pass.push()
 });
 
 let ID = "";
@@ -63,7 +60,6 @@ closebutton.addEventListener('click', () => {
 });
 
 popupCommentButton.addEventListener('click', () => {
-  console.log(ID, inputname.value, textarea.value)
   addcomment({
     item_id: ID,
     username: inputname.value,
