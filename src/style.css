@@ -88,7 +88,7 @@ section {
   background-color: white;
   position: fixed;
   top: 0;
-  left: 7.5px;
+  left: 1rem;
   transform: scale(0.1);
   text-align: center;
   visibility: hidden;
@@ -153,4 +153,17 @@ textarea {
 .popupCommentButton {
   width: 25%;
   height: 2rem;
+}
+
+.commentsContainer {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countercomment {
+  font-family: Roboto , sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
