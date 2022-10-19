@@ -63,6 +63,10 @@ closebutton.addEventListener('click', () => {
 });
 
 popupCommentButton.addEventListener('click', () => {
-  console.log(typeof ID, typeof inputname.value, typeof textarea.value)
-  addcomment(ID, inputname.value, textarea.value)
+  console.log(ID, inputname.value, textarea.value)
+  addcomment({
+    item_id: ID,
+    username: inputname.value,
+    comment: textarea.value,
+  })
 })
