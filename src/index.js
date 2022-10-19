@@ -13,6 +13,7 @@ const popupCommentButton = document.querySelector('.popupCommentButton');
 const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
+const countercomment = document.querySelector('.countercomment');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -30,7 +31,7 @@ id.forEach((movie) => {
 });
 
 let ID = '';
-
+let commentCounter = 0;
 function openPopUp() {
   popup.classList.add('open');
 }
@@ -51,12 +52,20 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      fetchcomment(ID);
+      let count = fetchcomment(ID, commentCounter);
+      count.then(res => {
+        console.log("RES is", res)
+        commentCounter = res;
+        console.log("Comment counter is", commentCounter, typeof commentCounter);
+        countercomment.innerHTML = commentCounter;
+      });
     });
   }
 });
 
 closebutton.addEventListener('click', () => {
+  commentsload.innerHTML = '';
+  commentCounter = 0;
   closePopUp();
 });
 
@@ -67,4 +76,7 @@ popupCommentButton.addEventListener('click', () => {
     comment: textarea.value,
   });
   commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
+  commentCounter += 1;
+  console.log(commentCounter);
+  countercomment.innerHTML = commentCounter;
 });
