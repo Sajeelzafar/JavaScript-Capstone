@@ -5,6 +5,6 @@ const addcomment = (Obj) => fetch('https://us-central1-involvement-api.cloudfunc
   },
   body: JSON.stringify(Obj),
 }).then((res) => res)
-.then(output => output);
+  .then((output) => output);
 
 export default addcomment;

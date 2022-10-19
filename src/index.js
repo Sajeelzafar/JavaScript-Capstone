@@ -52,10 +52,10 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      fetchcomment(ID).then(output => {
-          output.forEach(comment => {
-            commentsload.innerHTML += `<p><span>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`
-          })
+      fetchcomment(ID).then((output) => {
+        output.forEach((comment) => {
+          commentsload.innerHTML += `<p><span>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
+        });
       });
     });
   }
