@@ -2,6 +2,7 @@
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
+import fetchcomment from './modules/fetchcomment.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -49,6 +50,9 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
+      fetchcomment(ID).then(output => {
+        output;
+      });
     });
   }
 });
