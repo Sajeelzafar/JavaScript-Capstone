@@ -6,7 +6,7 @@ const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
-    movies.innerHTML += `<div class="movie-img">
+    movies.innerHTML += `<div id="${movie}" class="movie-img">
     <img src="${res.image.medium}">
     <section class='movie-desk'>
       <p class="movie-title">${res.name}</p>
@@ -15,6 +15,14 @@ id.forEach((movie) => {
         <p>2 likes</p>
       </div>
     </section>
-    <button>Comment</button></div>`;
+    <button class="comment-button">Comment</button></div>`;
   });
 });
+
+movies.addEventListener('click', (e) => {
+  if (e.target.classList.contains("comment-button")){
+    
+    // fetchData().then(res => console.log(res.genres));
+  }
+
+})
