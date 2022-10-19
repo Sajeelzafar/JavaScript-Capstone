@@ -115,7 +115,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n// import _ from 'lodash';\r\n\r\n\n\n//# sourceURL=webpack://installing-webpack/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_getMovies_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getMovies.js */ \"./src/modules/getMovies.js\");\n// import _ from 'lodash';\r\n\r\n\r\n\r\nconst url = 'https://api.tvmaze.com/shows';\r\n\r\n(0,_modules_getMovies_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(url);\r\n\n\n//# sourceURL=webpack://installing-webpack/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/displayMovies.js":
+/*!**************************************!*\
+  !*** ./src/modules/displayMovies.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst getLike = async () => {\r\n    const res = await getLikes();\r\n    return res;\r\n  };\r\n  \r\n  const showMovies = async (data) => {\r\n    const response = await getLike();\r\n    data.forEach((m, i) => {\r\n      const movieEl = document.querySelector('.movie-info');\r\n      const movieNbr = document.querySelector('.nbr-m');\r\n      const html = `\r\n        <div class=\"movie\">\r\n          <img src='${m.image.medium}' alt=\"image\">\r\n          <div class=\"movie-header\">\r\n              <h3>${m.name}${i + 1}</h3>\r\n              <div class=\"liked\">\r\n                  <i class=\"fa-solid fa-heart\" id=${i + 1}></i>\r\n                  <span class=\"span\" id='s${i + 1}'> ${response[i] ? response.filter((r) => r.item_id === `item${i + 1}`)[0].likes : '0'}likes</span>\r\n              </div>\r\n          </div>\r\n          <div class=\"btns\"> \r\n              <button id=\"${m.id}\" class=\"comments\">Comment</button>\r\n              <button class=\"reservaton\">Reservation</button>\r\n          </div>       \r\n        </div> \r\n        `;\r\n      movieNbr.innerHTML = i + 1;\r\n      movieEl.insertAdjacentHTML('afterbegin', html);\r\n    });\r\n  };\r\n    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showMovies);\n\n//# sourceURL=webpack://installing-webpack/./src/modules/displayMovies.js?");
+
+/***/ }),
+
+/***/ "./src/modules/getMovies.js":
+/*!**********************************!*\
+  !*** ./src/modules/getMovies.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _displayMovies_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./displayMovies.js */ \"./src/modules/displayMovies.js\");\n\r\n\r\nconst getMovies = (url) => {\r\n  fetch(url)\r\n    .then((response) => response.json())\r\n    .then((json) => (0,_displayMovies_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(json.filter((movie) => movie.id <= 33)));\r\n};\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMovies);\r\n\n\n//# sourceURL=webpack://installing-webpack/./src/modules/getMovies.js?");
 
 /***/ })
 
