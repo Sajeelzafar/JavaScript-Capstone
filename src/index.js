@@ -34,15 +34,14 @@ movies.addEventListener('click', (e) => {
   if (e.target.classList.contains("comment-button")){
     fetchData(e.target.parentElement.id).then(res => {
       openPopUp();
-      popupContent.innerHTML = `<div class="image">
+      popupContent.innerHTML = `<div>
       <img src="${res.image.medium}"></div>
       <div class="firstline">
-      <span class="firstlineItemone">${res.name}</span>
+      <span class="firstlineItemone">Categories: ${res.genres.join(", ")}</span>
       <span class="firstlineItemtwo">Rating: ${res.rating.average}</span>
       </div>
       <div class="secondline">${res.summary}
-      </div>`;
-      console.log(res); 
+      </div>`; 
     });
   }
 
