@@ -80,3 +80,41 @@ section {
 .fa-heart:active {
   background: red;
 }
+
+.pop-up {
+    width: 98%;
+    height: 100vh;
+    z-index: 99;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 7.5px;
+    transform: scale(0.1);
+    text-align: center;
+    visibility: hidden;
+  }
+
+  .popupContent {
+    overflow: scroll;
+    height: 80%;
+    border-radius: 6px;
+    border: 2px solid black;
+    color: #333;
+    padding: 4%;
+  }
+
+  .open {
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    transform: scale(1);
+  }
+
+  .closebutton {
+    font-size: 50px;
+    font-weight: bolder;
+    position: fixed;
+    right: 50px;
+    top: 40px;
+    cursor: pointer;
+  }
