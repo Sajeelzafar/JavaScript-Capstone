@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Leaderboard API
+# JavaScript Capstone Project
 
 > In this project, a website for movies is being build. The external API used for showing items and details is [TVmaze API](https://www.tvmaze.com/api). 
 

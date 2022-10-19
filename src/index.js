@@ -1,12 +1,17 @@
 // import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
+// import newapp from './modules/newapp';
+// import commentData from './modules/loadinginfo.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
+const pass = [];
 const popup = document.querySelector('.pop-up');
 const closebutton = document.querySelector('.closebutton');
-const popupContent = document.querySelector('.popupContent');
+const popupContentLoad = document.querySelector('.popupContentLoad');
+
+
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -21,6 +26,7 @@ id.forEach((movie) => {
     </section>
     <button class="comment-button">Comment</button></div>`;
   });
+  // pass.push()
 });
 
 function openPopUp() {
@@ -34,7 +40,7 @@ movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
     fetchData(e.target.parentElement.id).then((res) => {
       openPopUp();
-      popupContent.innerHTML = `<div>
+      popupContentLoad.innerHTML = `<div>
       <img src="${res.image.medium}"></div>
       <div class="firstline">
       <span class="firstlineItemone">Categories: ${res.genres.join(', ')}</span>
@@ -43,7 +49,8 @@ movies.addEventListener('click', (e) => {
       <div class="secondline">${res.summary}
       </div>`;
     });
-  }
+
+    }
 });
 
 closebutton.addEventListener('click', () => {
