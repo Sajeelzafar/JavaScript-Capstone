@@ -3,6 +3,7 @@ import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
 import fetchcomment from './modules/fetchcomment.js';
+import commentCounterFunction from './modules/commentCounter.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -41,7 +42,7 @@ function closePopUp() {
 
 movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
-    fetchData(e.target.parentElement.id).then((res) => {
+    fetchData(e.target.parentElement.id).then(async (res) => {
       openPopUp();
       ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
@@ -52,11 +53,9 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      const count = fetchcomment(ID, commentCounter);
-      count.then((res) => {
-        commentCounter = res;
-        countercomment.innerHTML = `( ${commentCounter} )`;
-      });
+      await fetchcomment(ID);
+      commentCounter = commentCounterFunction();
+      countercomment.innerHTML = `( ${commentCounter} )`;
     });
   }
 });
@@ -74,7 +73,7 @@ popupCommentButton.addEventListener('click', () => {
     comment: textarea.value,
   });
   commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
-  commentCounter += 1;
+  commentCounter = commentCounterFunction();
   countercomment.innerHTML = `( ${commentCounter} )`;
   inputname.value = '';
   textarea.value = '';
