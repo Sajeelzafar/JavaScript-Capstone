@@ -2,6 +2,7 @@
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
+import addlike from './modules/addlike.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -11,6 +12,7 @@ const popupContentLoad = document.querySelector('.popupContentLoad');
 const popupCommentButton = document.querySelector('.popupCommentButton');
 const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
+const likeButton = document.querySelector('.like-button');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -20,7 +22,7 @@ id.forEach((movie) => {
       <p class="movie-title">${res.name}</p>
       <div class="like-button">
         <button class="like-button"><i class="fa-regular fa-heart"></i></button>
-        <p>2 likes</p>
+        <p></p>
       </div>
     </section>
     <button class="comment-button">Comment</button></div>`;
@@ -62,5 +64,11 @@ popupCommentButton.addEventListener('click', () => {
     item_id: ID,
     username: inputname.value,
     comment: textarea.value,
+  });
+});
+
+likeButton.addEventListener('click', () => {
+  addlike({
+    item_id: ID,
   });
 });
