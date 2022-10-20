@@ -5,6 +5,7 @@ import addcomment from './modules/addcomment.js';
 import fetchcomment from './modules/fetchcomment.js';
 import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
+import fetchlike from './modules/fetchlike.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -16,6 +17,7 @@ const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
+const like = document.querySelector('.like');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -85,3 +87,14 @@ popupCommentButton.addEventListener('click', () => {
   inputname.value = '';
   textarea.value = '';
 });
+
+like.addEventListener('click', (e) => {
+  if (e.target.classList.contains('like')) {
+    fetchlike({
+      likes: 1,
+      item_id: ID,
+    });
+
+  }
+});
+
