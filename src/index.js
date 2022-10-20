@@ -27,7 +27,7 @@ id.forEach((movie) => {
       <p class="movie-title">${res.name}</p>
       <div class="like-button">
       <button class="like-button"><i class="fa-regular fa-heart like"></i></button>
-        <p></p>
+        <p class="testinglikes></p>
       </div>
     </section>
     <button class="comment-button">Comment</button></div>`;
@@ -66,8 +66,17 @@ movies.addEventListener('click', (e) => {
     addlike({
       item_id: ID,
     });
+    fetchlike({
+      likes: 0,
+      item_id: ID,
+    });
   }
 });
+
+if (e.target.matches('.like')) {
+  const spans = e.target.parentNode.querySelector(`[id = 's${e.target.id}']`);
+  spans.innerHTML = `${response.filter((res) => res.item_id === `item${e.target.id}`)[0].likes + 1} likes`;
+}
 
 closebutton.addEventListener('click', () => {
   commentsload.innerHTML = '';
@@ -86,15 +95,5 @@ popupCommentButton.addEventListener('click', () => {
   countercomment.innerHTML = `( ${commentCounter} )`;
   inputname.value = '';
   textarea.value = '';
-});
-
-like.addEventListener('click', (e) => {
-  if (e.target.classList.contains('like')) {
-    fetchlike({
-      likes: 1,
-      item_id: ID,
-    });
-
-  }
 });
 
