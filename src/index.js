@@ -3,6 +3,7 @@ import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
 import fetchcomment from './modules/fetchcomment.js';
+import commentCounterFunction from './modules/commentCounter.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -13,6 +14,7 @@ const popupCommentButton = document.querySelector('.popupCommentButton');
 const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
+const countercomment = document.querySelector('.countercomment');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -30,7 +32,7 @@ id.forEach((movie) => {
 });
 
 let ID = '';
-
+let commentCounter = 0;
 function openPopUp() {
   popup.classList.add('open');
 }
@@ -40,8 +42,7 @@ function closePopUp() {
 
 movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
-    commentsload.innerHTML = '';
-    fetchData(e.target.parentElement.id).then((res) => {
+    fetchData(e.target.parentElement.id).then(async (res) => {
       openPopUp();
       ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
@@ -52,16 +53,16 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      fetchcomment(ID).then((output) => {
-        output.forEach((comment) => {
-          commentsload.innerHTML += `<p><span>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
-        });
-      });
+      await fetchcomment(ID);
+      commentCounter = commentCounterFunction();
+      countercomment.innerHTML = `( ${commentCounter} )`;
     });
   }
 });
 
 closebutton.addEventListener('click', () => {
+  commentsload.innerHTML = '';
+  commentCounter = 0;
   closePopUp();
 });
 
@@ -71,4 +72,9 @@ popupCommentButton.addEventListener('click', () => {
     username: inputname.value,
     comment: textarea.value,
   });
+  commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
+  commentCounter = commentCounterFunction();
+  countercomment.innerHTML = `( ${commentCounter} )`;
+  inputname.value = '';
+  textarea.value = '';
 });
