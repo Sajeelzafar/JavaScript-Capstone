@@ -1,8 +1,10 @@
-const like = document.querySelector('.like');
+const like = document.querySelector(".like");
 
 export default async function fetchlike() {
-  like.innerHTML = '';
-  await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/likes`)
+  like.innerHTML = "";
+  await fetch(
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/likes`
+  )
     .then((res) => res.json())
     .then((output) => {
       output.forEach((like) => {
