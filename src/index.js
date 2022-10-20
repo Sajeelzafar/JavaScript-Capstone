@@ -17,17 +17,24 @@ const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
-const like = document.querySelector('.like');
+let nooflikes;
 
 id.forEach((movie) => {
-  fetchData(movie).then((res) => {
+  fetchData(movie).then(async (res) => {
+    nooflikes = 0;
+    let likesdisplay = await fetchlike();
+    likesdisplay.forEach((element) => {
+      if(element.item_id == movie){
+        nooflikes = element.likes;
+      }
+    })
     movies.innerHTML += `<div id="${movie}" class="movie-img">
     <img src="${res.image.medium}">
     <section class='movie-desk'>
       <p class="movie-title">${res.name}</p>
-      <div class="like-button">
-      <button class="like-button"><i class="fa-regular fa-heart like"></i></button>
-        <p class="testinglikes></p>
+      <div class="likeContainer">
+      <button id="${movie}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
+        <p class="likesnumber">No. of likes are: ${nooflikes}</p>
       </div>
     </section>
     <button class="comment-button">Comment</button></div>`;
@@ -43,11 +50,11 @@ function closePopUp() {
   popup.classList.remove('open');
 }
 
-movies.addEventListener('click', (e) => {
+movies.addEventListener('click', async (e) => {
+  ID = e.target.parentElement.id;
   if (e.target.classList.contains('comment-button')) {
     fetchData(e.target.parentElement.id).then(async (res) => {
       openPopUp();
-      ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
       <img id="${e.target.parentElement.id}" src="${res.image.medium}"></div>
       <div class="firstline">
@@ -63,20 +70,20 @@ movies.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('like')) {
+    let likesdisplay = await fetchlike();
+    likesdisplay.forEach((element) => {
+      if(element.item_id == ID){
+        nooflikes = element.likes;
+      }
+    })
+    e.target.parentElement.parentElement.innerHTML = 
+    `<button id="${ID}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
+    <p class="likesnumber">No. of likes are: ${nooflikes}</p>`;
     addlike({
       item_id: ID,
-    });
-    fetchlike({
-      likes: 0,
-      item_id: ID,
-    });
+    });  
   }
 });
-
-if (e.target.matches('.like')) {
-  const spans = e.target.parentNode.querySelector(`[id = 's${e.target.id}']`);
-  spans.innerHTML = `${response.filter((res) => res.item_id === `item${e.target.id}`)[0].likes + 1} likes`;
-}
 
 closebutton.addEventListener('click', () => {
   commentsload.innerHTML = '';
