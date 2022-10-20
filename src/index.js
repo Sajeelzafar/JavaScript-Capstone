@@ -21,7 +21,7 @@ id.forEach((movie) => {
     <section class='movie-desk'>
       <p class="movie-title">${res.name}</p>
       <div class="like-button">
-        <button class="like-button"><i class="fa-regular fa-heart"></i></button>
+      <button class="like-button"><i class="fa-regular fa-heart like"></i></button>
         <p></p>
       </div>
     </section>
