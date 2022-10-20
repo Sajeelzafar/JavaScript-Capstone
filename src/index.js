@@ -76,4 +76,6 @@ popupCommentButton.addEventListener('click', () => {
   commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
   commentCounter += 1;
   countercomment.innerHTML = `( ${commentCounter} )`;
+  inputname.value = '';
+  textarea.value = '';
 });

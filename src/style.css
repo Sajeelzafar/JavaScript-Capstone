@@ -38,21 +38,23 @@ nav a {
 .borderbox {
   width: 100%;
   border: 3px solid black;
+  padding: 2.5%;
 }
 
 .footer {
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 95%;
 }
 
 .footerText {
   font-family: Roboto, sans-serif;
-  padding: 2.5%;
+  margin-bottom: 0;
   border-bottom: none;
 }
 
 .endblackbox {
+  /* margin-top: 0; */
   background-color: grey;
   height: 2rem;
 }
