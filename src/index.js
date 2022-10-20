@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 // import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
@@ -22,12 +25,12 @@ let nooflikes;
 id.forEach((movie) => {
   fetchData(movie).then(async (res) => {
     nooflikes = 0;
-    let likesdisplay = await fetchlike();
+    const likesdisplay = await fetchlike();
     likesdisplay.forEach((element) => {
-      if(element.item_id == movie){
+      if (element.item_id === movie) {
         nooflikes = element.likes;
       }
-    })
+    });
     movies.innerHTML += `<div id="${movie}" class="movie-img">
     <img src="${res.image.medium}">
     <section class='movie-desk'>
@@ -70,18 +73,17 @@ movies.addEventListener('click', async (e) => {
   }
 
   if (e.target.classList.contains('like')) {
-    let likesdisplay = await fetchlike();
+    const likesdisplay = await fetchlike();
     likesdisplay.forEach((element) => {
-      if(element.item_id == ID){
+      if (element.item_id === ID) {
         nooflikes = element.likes;
       }
-    })
-    e.target.parentElement.parentElement.innerHTML = 
-    `<button id="${ID}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
+    });
+    e.target.parentElement.parentElement.innerHTML = `<button id="${ID}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
     <p class="likesnumber">No. of likes are: ${nooflikes}</p>`;
     addlike({
       item_id: ID,
-    });  
+    });
   }
 });
 
@@ -103,4 +105,3 @@ popupCommentButton.addEventListener('click', () => {
   inputname.value = '';
   textarea.value = '';
 });
-
