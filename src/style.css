@@ -38,21 +38,23 @@ nav a {
 .borderbox {
   width: 100%;
   border: 3px solid black;
+  padding: 2.5%;
 }
 
 .footer {
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 95%;
 }
 
 .footerText {
   font-family: Roboto, sans-serif;
-  padding: 2.5%;
+  margin-bottom: 0;
   border-bottom: none;
 }
 
 .endblackbox {
+  /* margin-top: 0; */
   background-color: grey;
   height: 2rem;
 }
@@ -88,7 +90,7 @@ section {
   background-color: white;
   position: fixed;
   top: 0;
-  left: 7.5px;
+  left: 1rem;
   transform: scale(0.1);
   text-align: center;
   visibility: hidden;
@@ -153,4 +155,17 @@ textarea {
 .popupCommentButton {
   width: 25%;
   height: 2rem;
+}
+
+.commentsContainer {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countercomment {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }

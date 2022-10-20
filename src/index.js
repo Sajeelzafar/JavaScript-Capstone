@@ -2,6 +2,8 @@
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
+import fetchcomment from './modules/fetchcomment.js';
+import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
 
 const movies = document.querySelector('.movie-info');
@@ -12,6 +14,8 @@ const popupContentLoad = document.querySelector('.popupContentLoad');
 const popupCommentButton = document.querySelector('.popupCommentButton');
 const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
+const commentsload = document.querySelector('.commentsload');
+const countercomment = document.querySelector('.countercomment');
 const likeButton = document.querySelector('.like-button');
 
 id.forEach((movie) => {
@@ -30,7 +34,7 @@ id.forEach((movie) => {
 });
 
 let ID = '';
-
+let commentCounter = 0;
 function openPopUp() {
   popup.classList.add('open');
 }
@@ -40,7 +44,7 @@ function closePopUp() {
 
 movies.addEventListener('click', (e) => {
   if (e.target.classList.contains('comment-button')) {
-    fetchData(e.target.parentElement.id).then((res) => {
+    fetchData(e.target.parentElement.id).then(async (res) => {
       openPopUp();
       ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
@@ -51,6 +55,9 @@ movies.addEventListener('click', (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
+      await fetchcomment(ID);
+      commentCounter = commentCounterFunction();
+      countercomment.innerHTML = `( ${commentCounter} )`;
     });
   }
 
@@ -62,6 +69,8 @@ movies.addEventListener('click', (e) => {
 });
 
 closebutton.addEventListener('click', () => {
+  commentsload.innerHTML = '';
+  commentCounter = 0;
   closePopUp();
 });
 
@@ -71,5 +80,10 @@ popupCommentButton.addEventListener('click', () => {
     username: inputname.value,
     comment: textarea.value,
   });
+  commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
+  commentCounter = commentCounterFunction();
+  countercomment.innerHTML = `( ${commentCounter} )`;
+  inputname.value = '';
+  textarea.value = '';
 });
 
