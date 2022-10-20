@@ -4,6 +4,7 @@ import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
 import fetchcomment from './modules/fetchcomment.js';
 import commentCounterFunction from './modules/commentCounter.js';
+import addlike from './modules/addlike.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -23,8 +24,8 @@ id.forEach((movie) => {
     <section class='movie-desk'>
       <p class="movie-title">${res.name}</p>
       <div class="like-button">
-        <button class="like-button"><i class="fa-regular fa-heart"></i></button>
-        <p>2 likes</p>
+      <button class="like-button"><i class="fa-regular fa-heart like"></i></button>
+        <p></p>
       </div>
     </section>
     <button class="comment-button">Comment</button></div>`;
@@ -56,6 +57,12 @@ movies.addEventListener('click', (e) => {
       await fetchcomment(ID);
       commentCounter = commentCounterFunction();
       countercomment.innerHTML = `( ${commentCounter} )`;
+    });
+  }
+
+  if (e.target.classList.contains('like')) {
+    addlike({
+      item_id: ID,
     });
   }
 });
