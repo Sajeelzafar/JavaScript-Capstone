@@ -16,7 +16,6 @@ const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
-const likeButton = document.querySelector('.like-button');
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -86,4 +85,3 @@ popupCommentButton.addEventListener('click', () => {
   inputname.value = '';
   textarea.value = '';
 });
-
