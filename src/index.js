@@ -1,18 +1,18 @@
 // import _ from 'lodash';
-import './style.css';
-import fetchData from './modules/displayMovies.js';
-import addcomment from './modules/addcomment.js';
-import addlike from './modules/addlike.js';
+import "./style.css";
+import fetchData from "./modules/displayMovies.js";
+import addcomment from "./modules/addcomment.js";
+import addlike from "./modules/addlike.js";
 
-const movies = document.querySelector('.movie-info');
+const movies = document.querySelector(".movie-info");
 const id = [1, 2, 3, 4, 5, 6];
-const popup = document.querySelector('.pop-up');
-const closebutton = document.querySelector('.closebutton');
-const popupContentLoad = document.querySelector('.popupContentLoad');
-const popupCommentButton = document.querySelector('.popupCommentButton');
-const inputname = document.querySelector('.inputname');
-const textarea = document.querySelector('.textarea');
-const likeButton = document.querySelector('.like-button');
+const popup = document.querySelector(".pop-up");
+const closebutton = document.querySelector(".closebutton");
+const popupContentLoad = document.querySelector(".popupContentLoad");
+const popupCommentButton = document.querySelector(".popupCommentButton");
+const inputname = document.querySelector(".inputname");
+const textarea = document.querySelector(".textarea");
+const likeButton = document.querySelector(".like-button");
 
 id.forEach((movie) => {
   fetchData(movie).then((res) => {
@@ -29,37 +29,43 @@ id.forEach((movie) => {
   });
 });
 
-let ID = '';
+let ID = "";
 
 function openPopUp() {
-  popup.classList.add('open');
+  popup.classList.add("open");
 }
 function closePopUp() {
-  popup.classList.remove('open');
+  popup.classList.remove("open");
 }
 
-movies.addEventListener('click', (e) => {
-  if (e.target.classList.contains('comment-button')) {
+movies.addEventListener("click", (e) => {
+  if (e.target.classList.contains("comment-button")) {
     fetchData(e.target.parentElement.id).then((res) => {
       openPopUp();
       ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
       <img id="${e.target.parentElement.id}" src="${res.image.medium}"></div>
       <div class="firstline">
-      <span class="firstlineItemone">Categories: ${res.genres.join(', ')}</span>
+      <span class="firstlineItemone">Categories: ${res.genres.join(", ")}</span>
       <span class="firstlineItemtwo">Rating: ${res.rating.average}</span>
       </div>
       <div class="secondline">${res.summary}
       </div>`;
     });
   }
+
+  if (e.target.classList.contains("like")) {
+    addlike({
+      item_id: ID,
+    });
+  }
 });
 
-closebutton.addEventListener('click', () => {
+closebutton.addEventListener("click", () => {
   closePopUp();
 });
 
-popupCommentButton.addEventListener('click', () => {
+popupCommentButton.addEventListener("click", () => {
   addcomment({
     item_id: ID,
     username: inputname.value,
@@ -67,7 +73,7 @@ popupCommentButton.addEventListener('click', () => {
   });
 });
 
-likeButton.addEventListener('click', () => {
+likeButton.addEventListener("click", () => {
   addlike({
     item_id: ID,
   });
