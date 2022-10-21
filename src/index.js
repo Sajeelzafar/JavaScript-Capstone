@@ -11,7 +11,7 @@ import addlike from './modules/addlike.js';
 import fetchlike from './modules/fetchlike.js';
 
 const movies = document.querySelector('.movie-info');
-const id = [1, 2, 3, 4, 5, 6];
+const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const popup = document.querySelector('.pop-up');
 const closebutton = document.querySelector('.closebutton');
 const popupContentLoad = document.querySelector('.popupContentLoad');
