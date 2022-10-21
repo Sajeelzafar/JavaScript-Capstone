@@ -11,7 +11,7 @@ import addlike from './modules/addlike.js';
 import fetchlike from './modules/fetchlike.js';
 
 const movies = document.querySelector('.movie-info');
-const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 99];
 const popup = document.querySelector('.pop-up');
 const closebutton = document.querySelector('.closebutton');
 const popupContentLoad = document.querySelector('.popupContentLoad');
@@ -24,8 +24,8 @@ let nooflikes;
 
 id.forEach((movie) => {
   fetchData(movie).then(async (res) => {
-    nooflikes = 0;
     const likesdisplay = await fetchlike();
+    nooflikes = 0;
     likesdisplay.forEach((element) => {
       if (parseInt(element.item_id, 10) === movie) {
         nooflikes = element.likes;
