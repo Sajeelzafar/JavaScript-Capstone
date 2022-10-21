@@ -27,7 +27,7 @@ id.forEach((movie) => {
     nooflikes = 0;
     const likesdisplay = await fetchlike();
     likesdisplay.forEach((element) => {
-      if (element.item_id === movie) {
+      if (parseInt(element.item_id) === movie) {
         nooflikes = element.likes;
       }
     });
@@ -71,8 +71,10 @@ movies.addEventListener('click', async (e) => {
       countercomment.innerHTML = `( ${commentCounter} )`;
     });
   }
-
   if (e.target.classList.contains('like')) {
+    await addlike({
+      item_id: ID,
+    });
     const likesdisplay = await fetchlike();
     likesdisplay.forEach((element) => {
       if (element.item_id === ID) {
@@ -81,9 +83,6 @@ movies.addEventListener('click', async (e) => {
     });
     e.target.parentElement.parentElement.innerHTML = `<button id="${ID}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
     <p class="likesnumber">No. of likes are: ${nooflikes}</p>`;
-    addlike({
-      item_id: ID,
-    });
   }
 });
 
