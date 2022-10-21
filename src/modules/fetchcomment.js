@@ -1,8 +1,8 @@
 const commentsload = document.querySelector('.commentsload');
 
-export default async function fetchcomment(id) {
+export default async function fetchcomment(id, key) {
   commentsload.innerHTML = '';
-  await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/comments?item_id=${id}`)
+  await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${key}/comments?item_id=${id}`)
     .then((res) => res.json())
     .then((output) => {
       if (output.error) {
