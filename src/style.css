@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+}
+
+header {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  gap: 200px;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 32px;
+  position: fixed;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px 30px;
+  color: rgb(14, 13, 13);
+}
+
+.logo a {
+  display: block;
+  font-weight: bold;
+  margin-left: 100px;
+  color: rgb(14, 13, 13);
+  text-decoration: none;
+}
+
+.my-movies {
+  text-decoration: underline;
+}
+
+.borderbox {
+  width: 100%;
+  border: 3px solid black;
+  padding: 2.5%;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 95%;
+}
+
+.footerText {
+  font-family: Roboto, sans-serif;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.endblackbox {
+  /* margin-top: 0; */
+  background-color: grey;
+  height: 2rem;
+}
+
+section {
+  height: auto;
+  padding-top: 40px;
+}
+
+.movie-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px 200px;
+  padding: 30px;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-heart:active {
+  background: red;
+}
+
+.pop-up {
+  width: 98%;
+  height: 100vh;
+  z-index: 99;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 1rem;
+  transform: scale(0.1);
+  text-align: center;
+  visibility: hidden;
+}
+
+.popupContent {
+  overflow: scroll;
+  height: 75%;
+  border-radius: 6px;
+  border: 2px solid black;
+  color: #333;
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.open {
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  transform: scale(1);
+}
+
+.closebutton {
+  font-size: 50px;
+  font-weight: bolder;
+  position: fixed;
+  right: 50px;
+  top: 40px;
+  cursor: pointer;
+}
+
+.firstline {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  padding-top: 2%;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.secondline {
+  font-family: Roboto, sans-serif;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputname {
+  width: 60%;
+  height: 2rem;
+}
+
+textarea {
+  padding: 2%;
+}
+
+.popupCommentButton {
+  width: 25%;
+  height: 2rem;
+}
+
+.commentsContainer {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countercomment {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
