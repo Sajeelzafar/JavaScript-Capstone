@@ -47,6 +47,22 @@ Open the directory in visual studio code by typing the following command in Git 
  code .
   ```
 
+The website would not load at start. To load the website, follow the given steps:
+- Open VScode and generate a key by using the following command
+```
+curl -X POST https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/
+
+```
+If it does not work try:
+
+```
+Remove-item alias:curl
+curl -X POST https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/
+```
+
+- After generating the key redirect to ```"./src/modules/api_key.js"``` and paste the key in that file.
+- The default key is generated for you in the comments of that file. 
+
 ## Authors
 
 👤 **Sajeel Zafar**
