@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 // import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
@@ -5,6 +8,7 @@ import addcomment from './modules/addcomment.js';
 import fetchcomment from './modules/fetchcomment.js';
 import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
+import fetchlike from './modules/fetchlike.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -16,16 +20,24 @@ const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
+let nooflikes;
 
 id.forEach((movie) => {
-  fetchData(movie).then((res) => {
+  fetchData(movie).then(async (res) => {
+    nooflikes = 0;
+    const likesdisplay = await fetchlike();
+    likesdisplay.forEach((element) => {
+      if (parseInt(element.item_id, 10) === movie) {
+        nooflikes = element.likes;
+      }
+    });
     movies.innerHTML += `<div id="${movie}" class="movie-img">
     <img src="${res.image.medium}">
     <section class='movie-desk'>
       <p class="movie-title">${res.name}</p>
-      <div class="like-button">
-      <button class="like-button"><i class="fa-regular fa-heart like"></i></button>
-        <p></p>
+      <div class="likeContainer">
+      <button id="${movie}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
+        <p class="likesnumber">No. of likes are: ${nooflikes}</p>
       </div>
     </section>
     <button class="comment-button">Comment</button></div>`;
@@ -41,11 +53,11 @@ function closePopUp() {
   popup.classList.remove('open');
 }
 
-movies.addEventListener('click', (e) => {
+movies.addEventListener('click', async (e) => {
+  ID = e.target.parentElement.id;
   if (e.target.classList.contains('comment-button')) {
     fetchData(e.target.parentElement.id).then(async (res) => {
       openPopUp();
-      ID = e.target.parentElement.id;
       popupContentLoad.innerHTML = `<div>
       <img id="${e.target.parentElement.id}" src="${res.image.medium}"></div>
       <div class="firstline">
@@ -59,11 +71,18 @@ movies.addEventListener('click', (e) => {
       countercomment.innerHTML = `( ${commentCounter} )`;
     });
   }
-
   if (e.target.classList.contains('like')) {
-    addlike({
+    await addlike({
       item_id: ID,
     });
+    const likesdisplay = await fetchlike();
+    likesdisplay.forEach((element) => {
+      if (element.item_id === ID) {
+        nooflikes = element.likes;
+      }
+    });
+    e.target.parentElement.parentElement.innerHTML = `<button id="${ID}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
+    <p class="likesnumber">No. of likes are: ${nooflikes}</p>`;
   }
 });
 
