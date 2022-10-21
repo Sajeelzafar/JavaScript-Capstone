@@ -6,7 +6,7 @@ import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
 import fetchlike from './modules/fetchlike.js';
 import itemCounterFunction from './modules/itemCounter.js';
-import keyfunction from './modules/api_key';
+import keyfunction from './modules/api_key.js';
 
 const key = keyfunction();
 
