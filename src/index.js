@@ -27,7 +27,7 @@ id.forEach((movie) => {
     nooflikes = 0;
     const likesdisplay = await fetchlike();
     likesdisplay.forEach((element) => {
-      if (parseInt(element.item_id) === movie) {
+      if (parseInt(element.item_id, 10) === movie) {
         nooflikes = element.likes;
       }
     });
