@@ -1,6 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
 // import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
@@ -12,7 +9,7 @@ import fetchlike from './modules/fetchlike.js';
 import itemCounterFunction from './modules/itemCounter.js';
 
 const movies = document.querySelector('.movie-info');
-const id = [1, 2, 3, 4, 5, 6];
+const id = [1, 2, 3, 4, 5, 6, 7, 8];
 const popup = document.querySelector('.pop-up');
 const closebutton = document.querySelector('.closebutton');
 const popupContentLoad = document.querySelector('.popupContentLoad');
@@ -21,9 +18,8 @@ const inputname = document.querySelector('.inputname');
 const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
-let nooflikes;
-const moviecounter = itemCounterFunction();
-const displaycounter = document.querySelector('.shows');
+const shows = document.querySelector('.shows');
+let nooflikes = 0;
 
 id.forEach((movie) => {
   fetchData(movie).then(async (res) => {
@@ -36,7 +32,7 @@ id.forEach((movie) => {
     });
     movies.innerHTML += `<div id="${movie}" class="movie-img">
     <img src="${res.image.medium}">
-    <section class='movie-desk'>
+    <section class="movie-desk">
       <p class="movie-title">${res.name}</p>
       <div class="likeContainer">
       <button id="${movie}" class="like-button"><i class="fa-regular fa-heart like"></i></button>
@@ -46,7 +42,6 @@ id.forEach((movie) => {
     <button class="comment-button">Comment</button></div>`;
   });
 });
-
 let ID = '';
 let commentCounter = 0;
 let itemCounter = 0;
@@ -56,6 +51,11 @@ function openPopUp() {
 function closePopUp() {
   popup.classList.remove('open');
 }
+
+setTimeout(async () => {
+  itemCounter = await itemCounterFunction();
+  shows.innerHTML = `Shows (${itemCounter})`;
+}, 5000);
 
 movies.addEventListener('click', async (e) => {
   ID = e.target.parentElement.id;
@@ -108,5 +108,3 @@ popupCommentButton.addEventListener('click', () => {
   inputname.value = '';
   textarea.value = '';
 });
-
-displaycounter.innerHTML = `<a href="index.html">Shows(${moviecounter})</a>`;
