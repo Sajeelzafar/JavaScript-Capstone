@@ -1,6 +1,6 @@
-export default async function fetchlike() {
+export default async function fetchlike(key) {
   return fetch(
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/likes',
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${key}/likes`,
   )
     .then((res) => res.json())
     .then((output) => output);

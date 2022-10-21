@@ -1,4 +1,4 @@
-const addcomment = (Obj) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/comments', {
+const addcomment = (Obj, key) => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${key}/comments`, {
   method: 'POST',
   headers: {
     'Content-type': 'application/json; charset=UTF-8',

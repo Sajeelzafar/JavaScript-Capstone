@@ -1,5 +1,5 @@
-const addlike = (Obj) => fetch(
-  'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1RjuQJrVTvT45Mcm7X6n/likes',
+const addlike = (Obj, key) => fetch(
+  `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${key}/likes`,
   {
     method: 'POST',
     headers: {

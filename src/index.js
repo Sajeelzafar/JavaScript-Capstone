@@ -1,4 +1,3 @@
-// import _ from 'lodash';
 import './style.css';
 import fetchData from './modules/displayMovies.js';
 import addcomment from './modules/addcomment.js';
@@ -7,6 +6,9 @@ import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
 import fetchlike from './modules/fetchlike.js';
 import itemCounterFunction from './modules/itemCounter.js';
+import keyfunction from './modules/api_key';
+
+const key = keyfunction();
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 99];
@@ -23,7 +25,7 @@ let nooflikes = 0;
 
 id.forEach((movie) => {
   fetchData(movie).then(async (res) => {
-    const likesdisplay = await fetchlike();
+    const likesdisplay = await fetchlike(key);
     nooflikes = 0;
     likesdisplay.forEach((element) => {
       if (parseInt(element.item_id, 10) === movie) {
@@ -70,7 +72,7 @@ movies.addEventListener('click', async (e) => {
       </div>
       <div class="secondline">${res.summary}
       </div>`;
-      await fetchcomment(ID);
+      await fetchcomment(ID, key);
       commentCounter = commentCounterFunction();
       countercomment.innerHTML = `( ${commentCounter} )`;
     });
@@ -78,8 +80,8 @@ movies.addEventListener('click', async (e) => {
   if (e.target.classList.contains('like')) {
     await addlike({
       item_id: ID,
-    });
-    const likesdisplay = await fetchlike();
+    }, key);
+    const likesdisplay = await fetchlike(key);
     likesdisplay.forEach((element) => {
       if (element.item_id === ID) {
         nooflikes = element.likes;
@@ -101,7 +103,7 @@ popupCommentButton.addEventListener('click', () => {
     item_id: ID,
     username: inputname.value,
     comment: textarea.value,
-  });
+  }, key);
   commentsload.innerHTML += `<p><span>Just now ${inputname.value}: ${textarea.value}</p>`;
   commentCounter = commentCounterFunction();
   countercomment.innerHTML = `( ${commentCounter} )`;
