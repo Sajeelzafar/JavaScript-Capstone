@@ -9,6 +9,7 @@ import fetchcomment from './modules/fetchcomment.js';
 import commentCounterFunction from './modules/commentCounter.js';
 import addlike from './modules/addlike.js';
 import fetchlike from './modules/fetchlike.js';
+import itemCounterFunction from './modules/itemCounter.js';
 
 const movies = document.querySelector('.movie-info');
 const id = [1, 2, 3, 4, 5, 6];
@@ -21,6 +22,8 @@ const textarea = document.querySelector('.textarea');
 const commentsload = document.querySelector('.commentsload');
 const countercomment = document.querySelector('.countercomment');
 let nooflikes;
+const moviecounter = itemCounterFunction();
+const displaycounter = document.querySelector('.shows');
 
 id.forEach((movie) => {
   fetchData(movie).then(async (res) => {
@@ -46,6 +49,7 @@ id.forEach((movie) => {
 
 let ID = '';
 let commentCounter = 0;
+let itemCounter = 0;
 function openPopUp() {
   popup.classList.add('open');
 }
@@ -104,3 +108,5 @@ popupCommentButton.addEventListener('click', () => {
   inputname.value = '';
   textarea.value = '';
 });
+
+displaycounter.innerHTML = `<a href="index.html">Shows(${moviecounter})</a>`;
