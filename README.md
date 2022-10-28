@@ -14,7 +14,7 @@
   
 ## Live Demo (if available)
 
-[**Live Demo Will be Available Soon 🚀**]()
+[**Live Demo Link 🚀**](https://sajeelzafar.github.io/JavaScript-Capstone/dist/index.html)
 
 ## Getting Started
 
